@@ -24,4 +24,18 @@ describe TinyMoney::Money do
     result = ten_cents / 0.2
     expect(result.value).to eq(0.5)
   end
+
+  it 'loads money based on value' do
+    loaded_money = described_class.load(value)
+    expect(loaded_money.value).to eq(value)
+  end
+
+  it 'dumps value from money intance' do
+    dumped_value = described_class.dump(ten_cents)
+    expect(dumped_value).to eq(ten_cents.value)
+  end
+
+  it 'throws an ArgumentError when dumping object is not an money' do
+    expect { described_class.dump(Integer) }.to raise_error(ArgumentError)
+  end
 end

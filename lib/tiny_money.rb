@@ -18,6 +18,25 @@ module TinyMoney
       @this = BigDecimal(this.to_s)
     end
 
+    class << self
+      # method to work with active record. Based on
+      # https://www.viget.com/articles/how-i-used-activerecord-serialize-with-a-custom-data-tyApe
+      def load(loaded_value)
+        new(loaded_value)
+      end
+
+      def dump(obj)
+        raise ArgumentError, argument_error_message(obj) unless obj.is_a?(self)
+        obj.value
+      end
+
+      private
+
+      def argument_error_message(obj)
+        "Attribute was supposed to be a #{self}. but was #{obj.class}"
+      end
+    end
+
     def value
       @this.to_f
     end
