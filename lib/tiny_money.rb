@@ -57,6 +57,10 @@ module TinyMoney
       wrap_new_value(@this / other)
     end
 
+    def truncate(n)
+      @this.truncate(n)
+    end
+
     private
 
     def number?(num)
