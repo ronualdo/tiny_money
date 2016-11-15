@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ronualdo Maciel']
   spec.email         = ['raxmac@gmail.com']
 
-  spec.summary       = %q{A tiny type to represent money values.}
+  spec.summary       = 'A tiny type to represent money values.'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
